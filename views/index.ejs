@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>万题库-数据结构在线题库</title>
+    <script src="./javascripts/jquery-3.4.1.js"></script>
+    <script src="./javascripts/bootstrap.js"></script>
+    <script src="./javascripts/swiper.js"></script>
+    <script src="./javascripts/tools.js"></script>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_3166401_hlszzntbfwu.css">
+    <link rel="stylesheet" href="stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="./stylesheets/swiper.css">
+    <link rel="stylesheet" href="./stylesheets/reset.css">
+    <link rel="stylesheet" href="./stylesheets/index.css">
+</head>
+
+<body>
+    <!-- 顶部导航 -->
+    <nav class="navbar navbar-default navbar-fixed-top nav">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand logo" href="#"><img src="./images/wantiku_02.png" alt=""><img
+                        src="./images/wantiku_05.png" alt=""></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">首页<span class="sr-only">(current)</span></a></li>
+                    <li class="jin"><a href="/mybank">我的题库</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle jin" data-toggle="dropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false">刷题 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/section">章节练习</a></li>
+                            <li><a href="/chuang">闯关练习</a></li>
+                            <li><a href="/ttype">题型练习</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(name){ %>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                                <%=name%><span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/mine">我的</a></li>
+                                <li><a href="/quit">退出账号</a></li>
+                            </ul>
+                        </li>
+                        <%} else { %>
+                            <li class="please"><a href="/login">请登录</a></li>
+                            <% } %>
+                                <li><a href="/register">注册</a></li>
+                                </li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="输入你想要搜索的题目">
+                    </div>
+                    <button type="submit" class="btn btn-default">搜题</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="zhan"></div>
+    <!-- 轮播 -->
+    <div class="swiper banner">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="./images/banner1.png" alt=""></div>
+            <div class="swiper-slide"><img src="./images/banner2.png" alt=""></div>
+            <div class="swiper-slide"><img src="./images/banner3.png" alt=""></div>
+            <div class="swiper-slide"><img src="./images/banner4.png" alt=""></div>
+        </div>
+        <div class="swiper-pagination" id='page'></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+        <div class="swiper-button-next swiper-button-white"></div>
+    </div>
+
+    <!-- 功能条 -->
+    <div class="row funcs">
+        <div class="container js-funcs">
+            <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+                <img src="./images/wantiku_09.png">
+                <p>搜索试题</p>
+                <p>快速搜索试题</p>
+                <p>快速找到答案解析</p>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+                <img src="./images/wantiku_11.png">
+                <p>智能练习</p>
+                <p>利用人工智能算法</p>
+                <p>实现一对一智能快速练题</p>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+                <img src="./images/wantiku_13.png">
+                <p>智能评估</p>
+                <p>智能评估成绩</p>
+                <p>自我检测评估</p>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+                <img src="./images/wantiku_15.png">
+                <p>智能排名</p>
+                <p>每次记录成绩</p>
+                <p>智能排序名次</p>
+            </div>
+        </div>
+    </div>
+    <!-- 刷题方式 -->
+    <div class="title">
+        <img src="./images/a9914d8.png" alt=""> 在线刷题 多种练习方式
+        <img src="./images/bbfdcd8.png" alt="">
+    </div>
+    <div class="container items">
+        <div class="row js-shua">
+            <a href="/section">
+                <div class="col-lg-3 col-sm-6 col-xs-12 text-center jin">
+                    <div class="item">
+                        <img src="./images/70c1a01.png" alt="">
+                        <p>章节练习</p>
+                    </div>
+                </div>
+            </a>
+            <a href="/chuang">
+                <div class="col-lg-3 col-sm-6 col-xs-12 text-center jin">
+                    <div class="item">
+                        <img src="./images/58be7d7.png" alt="">
+                        <p>闯关练习</p>
+                    </div>
+                </div>
+            </a>
+            <a href="/ttype">
+                <div class="col-lg-3 col-sm-6 col-xs-12 text-center jin">
+                    <div class="item">
+                        <img src="./images/b115ca7.png" alt="">
+                        <p>题型练习</p>
+                    </div>
+                </div>
+            </a>
+            <a href="/mybank">
+                <div class="col-lg-3 col-sm-6 col-xs-12 text-center jin">
+                    <div class="item">
+                        <img src="./images/6eba971.png" alt="">
+                        <p>错题巩固</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- 扩展 -->
+    <div class="title">
+        <img src="./images/a9914d8.png" alt=""> 扩展强大功能
+        <img src="./images/bbfdcd8.png" alt="">
+    </div>
+
+    <div class="one">
+        <img src="./images/326fa81.png" alt="" class="photo">
+        <div class="text">
+            <p>多种题型支持</p>
+            <p>●●●</p>
+            <p>单选、多选、判断、填空、简答、论述、计算</p>
+            <p>题型可根据需要，进行自定义设筛选</p>
+        </div>
+    </div>
+    <div class="two">
+        <div class="text">
+            <p>题库市集</p>
+            <p>●●●</p>
+            <p>包含最全面的数据结构题目</p>
+            <p>搜索题库名称和试题内容后，即可直接练习、搜索试题答案</p>
+        </div>
+        <img src="./images/21532f9.png" alt="" class="photo">
+    </div>
+
+    <div class="three">
+        <img src="./images/e6515dc.png" alt="" class="photo">
+        <div class="text">
+            <p>支持同步练习</p>
+            <p>●●●</p>
+            <p>在电脑，可以刷题练习、搜索试题答案、生成题库等 </p>
+            <p>刷题练习完成后，自动统计练习结果，判断对错</p>
+        </div>
+    </div>
+    <div class="four">
+        <div class="text">
+            <p>闯关排行</p>
+            <p>●●●</p>
+            <p>闯关练习排行，自动生成用户闯关进度排名及图解，分析闯关数据 </p>
+            <p>帮助大家更好地学习进步</p>
+        </div>
+        <img src="./images/1eb2e97.png" alt="" class="photo">
+    </div>
+    <!-- 底部 -->
+    <footer>
+        <ul>
+            <li>关于万题库</li>
+            <li>万题库大事记</li>
+            <li>隐私协议</li>
+            <li>入驻合作</li>
+            <li>帮助中心</li>
+        </ul>
+        <ul>
+            <li>车的处境搜查</li>
+            <li>下习生小女生</li>
+            <li>
+                查三姐妹阿双喜临门算我倒霉
+            </li>
+        </ul>
+        <ul>
+            <li>谁信啊开学困死我了代名词</li>
+            <li>西大桥谁的项目；</li>
+            <li>社查背单词两位领导</li>
+        </ul>
+        <ul>
+            <li>SCA参赛选手琪的无群多无群冲上去查</li>
+            <li>删除前是会计上大学前完成得出带我去多无群多无</li>
+            <li>重庆市的希望是确定性没胃口成千成万驱动器</li>
+        </ul>
+    </footer>
+    <!-- 右侧导航 -->
+    <div class="zixun">
+        <ul>
+            <li>
+                <i class="iconfont icon-QQ"></i>
+                <div class="txt">
+                    <p>QQ</p>
+                    <p>咨询</p>
+                </div>
+            </li>
+            <li>
+                <i class="iconfont icon-weixin"></i>
+                <div class="txt">
+                    <p>微信</p>
+                    <p>咨询</p>
+                </div>
+            </li>
+            <li>
+                <i class="iconfont icon-huidingbu"></i>
+                <div class="txt">
+                    <p>返回</p>
+                    <p>顶部</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="/javascripts/index.js"></script>
+    <script>
+        function pan(node) {
+            node.click(function () {
+                console.log(123);
+                if ($('.please').text() == '请登录') {
+                    confirm('您还没有登录，请先登录！')
+                    return false;
+                }
+            });
+        }
+        pan($('.jin'));
+    </script>
+</body>
+
+</html>

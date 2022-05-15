@@ -1,0 +1,184 @@
+.nav {
+  margin-bottom: 0;
+}
+
+.nav .logo img {
+  float: left;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.zhan {
+  height: 51px;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+}
+
+.my-bullet-active {
+  background: #fff;
+  opacity: 0.8;
+}
+
+.funcs {
+  background-color: #F1F7FE;
+  margin: 0;
+}
+
+.funcs .col-md-3:hover {
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.funcs img {
+  margin-top: 20px;
+  width: 54px;
+  height: 54px;
+}
+
+.funcs p {
+  font-size: 12px;
+  color: #a6a6a6;
+  font-family: microsoft yahei;
+  line-height: 20px;
+}
+
+.funcs p:first-of-type {
+  font-size: 22px;
+  color: #787878;
+  line-height: 50px;
+}
+
+.funcs p:last-of-type {
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 32px;
+  text-align: center;
+  color: #1a8cff;
+  margin: 40px 0;
+}
+
+.items .item {
+  transition: all .3s;
+  font-size: 16px;
+  padding-top: 70px;
+  color: #333;
+  height: 210px;
+  margin-left: 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 0 24px 0 rgba(26, 140, 255, 0.2);
+  position: relative;
+  top: 0;
+}
+
+.items .item:first-of-type {
+  margin-left: 0;
+}
+
+.items .item:hover {
+  top: -10px;
+  cursor: pointer;
+  box-shadow: 0 0 24px 0 rgba(26, 140, 255, 0.5);
+}
+
+.zixun {
+  position: fixed;
+  top: 50vh;
+  right: 10px;
+  z-index: 2;
+}
+
+.zixun li {
+  width: 46px;
+  height: 46px;
+  background-color: #fff;
+  text-align: center;
+  color: #208CFD;
+  margin-bottom: 20px;
+  cursor: pointer;
+  padding-top: 3px;
+}
+
+.zixun li .iconfont {
+  font-size: 30px;
+}
+
+.zixun li div {
+  font-size: 12px;
+}
+
+.one,
+.three {
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  height: 380px;
+  background-color: #f1f8ff;
+}
+
+.photo {
+  width: 60%;
+  max-width: 500px;
+}
+
+.text {
+  color: #666;
+  font-size: 15px;
+  margin: 50px 20px;
+}
+
+.text p {
+  line-height: 30px;
+}
+
+.text p:first-of-type {
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+}
+
+.text p:nth-of-type(2) {
+  color: #fbab3c;
+  line-height: 40px;
+  font-weight: bold;
+}
+
+.two,
+.four {
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  height: 380px;
+}
+
+footer {
+  background-color: #222;
+  color: #bbb;
+  padding: 20px 0;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+}
+
+footer ul li {
+  margin-top: 18px;
+  float: left;
+  padding: 0 14px;
+  border-right: 1px solid #bbb;
+}
+
+footer ul li:last-child {
+  border-right: 0;
+}

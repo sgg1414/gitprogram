@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/javascripts/jquery-3.4.1.js"></script>
+    <script src="/javascripts/tools.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_3166401_hlszzntbfwu.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <title>万题库-数据结构在线题库</title>
+</head>
+<style>
+    .active {
+        background-color: #007aff;
+    }
+
+    body {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    aside {
+        background-color: #304156;
+        color: #fff;
+        min-width: 200px;
+        min-height: 900px;
+
+    }
+
+    aside ul {
+        padding-inline-start: 0px;
+    }
+
+    aside li,
+    .timu,
+    .yonghu {
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+        cursor: pointer;
+    }
+
+
+    aside li:hover {
+        background-color: #007aff;
+    }
+
+    .right {
+        background-color: rgb(251, 241, 227);
+        width: 100%;
+        min-height: 900px;
+    }
+
+    .main {
+        display: none;
+    }
+
+    .show {
+        display: block !important;
+    }
+
+    .type1,
+    .type2 {
+        height: 0;
+        overflow: hidden;
+        transition: all .4s;
+    }
+
+    .timu i,
+    .yonghu i {
+        font-size: 10px;
+        margin-left: 6px;
+    }
+
+    table {
+        margin: 0 auto;
+    }
+
+    table tr {
+        text-align: center;
+        height: 50px;
+    }
+
+    table td {
+        min-width: 120px;
+    }
+
+    .search {
+        width: 800px;
+        margin: 20px auto;
+    }
+
+    .inp-search {
+        width: 500px;
+        height: 50px;
+        text-indent: 10px;
+    }
+
+    .btn-search,
+    .btn-add {
+        width: 100px;
+        height: 50px;
+        margin-left: 20px;
+    }
+
+    .btn-add {
+        float: right;
+    }
+
+    .xiaoshi {
+        display: none;
+    }
+
+    .cadd input,
+    .fadd input,
+    .uadd input {
+        margin: 20px;
+        height: 40px;
+        width: 350px;
+    }
+
+    .cadd,
+    .fadd,
+    .uadd {
+        margin: 0 auto;
+    }
+
+    .cadd .btn,
+    .fadd .btn,
+    .uadd .btn,
+    .quit {
+        width: 100px;
+    }
+</style>
+
+<body>
+    <%if(msg!=''){%>
+        <script>
+            confirm('添加失败，用户名或密码已存在')
+        </script>
+        <%}%>
+            <aside>
+                <ul>
+                    <li class="active xian">首页</li>
+                    <li class="timu">题目管理 <i class="iconfont icon-xiajiantou"></i></li>
+                    <div class="type1 chuxian">
+                        <li class="xian">选择题</li>
+                        <li class="xian">填空题</li>
+                    </div>
+                    <li class="yonghu">用户管理 <i class="iconfont icon-xiajiantou"></i></li>
+                    <div class="type2 chuxian">
+                        <li class="xian">用户信息管理</li>
+                        <li class="xian">用户错题管理</li>
+                    </div>
+                </ul>
+            </aside>
+            <div class="right">
+                <div class="container">
+                    <div class="main show">
+                        <hr />
+                        <h2>欢迎，<%=name%>
+                        </h2>
+                        <br />
+                        <form action="/guan/quit">
+                            <input type="submit" class="btn btn-info " class='quit' value="退出登录">
+                        </form>
+                    </div>
+
+                    <div class="main">
+                        <form action="/guan/dosou" method="post">
+                            <div class="search">
+                                <input type="text" class="inp-search" name="sou" placeholder="输入你想要搜索的题目">
+                                <input type="submit" class="btn btn-info btn-search" value="搜索"></input>
+                                <input type="hidden" value="xuan" name="type">
+                                <input type="button" class="btn btn-info btn-add addchose" value="添加题目"></input>
+                            </div>
+                        </form>
+                        <div class="cadd xiaoshi">
+                            <form action="/guan/doadd" method="post">
+                                题目：<input type="text" name="question"><br />
+                                所属章节：<input type="text" name="section" class="section"><br />
+                                选项A：<input type="text" name="ana"><br />
+                                选项B：<input type="text" name="anb"><br />
+                                选项C：<input type="text" name="anc"><br />
+                                选项D：<input type="text" name="andd"><br />
+                                答案：<input type="text" name="answer"><br />
+                                <input type="submit" value="添加" class="btn btn-info sub-cadd"><input type="reset"
+                                    value="重置" class="btn btn-info">
+                                <a href="/guan"><input type="button" value="取消" class="btn btn-info "></a>
+                            </form>
+                        </div>
+                        <table border="1px" class="cti">
+                            <tr>
+                                <td>题目id</td>
+                                <td>题目</td>
+                                <td>所属章节</td>
+                                <td>选项A</td>
+                                <td>选项B</td>
+                                <td>选项C</td>
+                                <td>选项D</td>
+                                <td>答案</td>
+                                <td>操作</td>
+                            </tr>
+                            <%for(i=0;i<cdata.length;i++){%>
+                                <tr>
+                                    <td>
+                                        <%= cdata[i].id%>
+                                    </td>
+                                    <td>
+                                        <%= cdata[i].question%>
+                                    </td>
+                                    <td>
+                                        <%= cdata[i].section%>
+                                    </td>
+                                    <td>
+                                        <%= cdata[i].ana%>
+                                    </td>
+                                    <td>
+                                        <%= cdata[i].anb%>
+                                    </td>
+                                    <td>
+                                        <%= cdata[i].anc%>
+                                    </td>
+                                    <td>
+                                        <%= cdata[i].andd%>
+                                    </td>
+                                    <td>
+                                        <%= cdata[i].answer%>
+                                    </td>
+                                    <td>
+                                        <form action="/guan/update" method="post">
+                                            <input type="hidden" name="type" value="chose">
+                                            <input type="hidden" name="id" value="<%= cdata[i].id%>">
+                                            <input class="update caozuo" type="submit" value="编辑"></input>
+                                        </form>
+                                        <form action="/guan/delete" method="post">
+                                            <input type="hidden" name="type" value="chose">
+                                            <input type="hidden" name="id" value="<%= cdata[i].id%>">
+                                            <input class="del caozuo" id="<%= cdata[i].id%>" type="submit" value="删除">
+                                            </input>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% }%>
+                        </table>
+                    </div>
+                    <div class="main">
+                        <form action="/guan/dosou" method="post">
+                            <div class="search"><input type="text" class="inp-search" name="sou"
+                                    placeholder="输入你想要搜索的题目">
+                                <input type="submit" class="btn btn-info btn-search" value="搜索"></input>
+                                <input type="hidden" value="tian" name="type"><input type="button"
+                                    class="btn btn-info btn-add addfill" value="添加题目"></input>
+                            </div>
+                        </form>
+
+                        <div class="fadd xiaoshi">
+                            <form action="/guan/doadd" method="post">
+                                所属章节：<input type="text" name="section" class="section"><br />
+                                题目：<input type="text" name="question"><br />
+                                答案：<input type="text" name="answer"><br />
+                                <input type="submit" value="添加" class="btn btn-info sub-fadd"><input type="reset"
+                                    value="重置" class="btn btn-info">
+                                <a href="/guan"><input type="button" value="取消" class="btn btn-info "></a>
+                            </form>
+                        </div>
+                        <table border="1px" class="fti">
+                            <tr>
+                                <td>题目id</td>
+                                <td>题目</td>
+                                <td>所属单元</td>
+                                <td>答案</td>
+                                <td>操作</td>
+                            </tr>
+                            <%for(var i=0;i<fdata.length;i++){%>
+                                <tr>
+                                    <td>
+                                        <%= fdata[i].id%>
+                                    </td>
+                                    <td>
+                                        <%= fdata[i].question%>
+                                    </td>
+                                    <td>
+                                        <%= fdata[i].section%>
+                                    </td>
+                                    <td>
+                                        <%= fdata[i].answer%>
+                                    </td>
+                                    <td>
+                                        <form action="/guan/update" method="post">
+                                            <input type="hidden" name="type" value="fill">
+                                            <input type="hidden" name="id" value="<%= fdata[i].id%>">
+                                            <input class="update caozuo" type="submit" value="编辑"></input>
+                                        </form>
+                                        <form action="/guan/delete" method="post">
+                                            <input type="hidden" name="type" value="fill">
+                                            <input type="hidden" name="id" value="<%= fdata[i].id%>">
+                                            <input class="del caozuo" id="<%= fdata[i].id%>" type="submit" value="删除">
+                                            </input>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% }%>
+                        </table>
+                    </div>
+                    <div class="main">
+                        <form action="/guan/dosou" method="post">
+                            <div class="search"><input type="text" class="inp-search" name="sou"
+                                    placeholder="输入你想要搜索的用户">
+                                <input type="submit" class="btn btn-info btn-search" value="搜索"></input>
+                                <input type="hidden" value="yong" name="type"><input type="button"
+                                    class="btn btn-info btn-add adduser" value="添加用户"></input>
+                            </div>
+                        </form>
+                        <div class="uadd xiaoshi">
+                            <form action="/guan/doadd" method="post">
+                                昵称：<input type="text" name="name" class="name"><br />
+                                电话：<input type="text" name="phone" class="phone"><br />
+                                密码：<input type="text" name="pwd" class="pwd"><br />
+                                <input type="submit" value="添加" class="btn btn-info sub-uadd">
+                                <input type="reset" value="重置" class="btn btn-info">
+                                <a href="/guan"><input type="button" value="取消" class="btn btn-info "></a>
+                            </form>
+                        </div>
+                        <table border="1px" class="umsg">
+                            <tr>
+                                <td>用户id</td>
+                                <td>昵称</td>
+                                <td>电话</td>
+                                <td>密码</td>
+                                <td>操作</td>
+                            </tr>
+                            <%for(var i=0;i<udata.length;i++){%>
+                                <tr>
+                                    <td>
+                                        <%= udata[i].id%>
+                                    </td>
+                                    <td>
+                                        <%= udata[i].name%>
+                                    </td>
+                                    <td>
+                                        <%= udata[i].phone%>
+                                    </td>
+                                    <td>
+                                        <%= udata[i].pwd%>
+                                    </td>
+                                    <td>
+                                        <form action="/guan/update" method="post">
+                                            <input type="hidden" name="type" value="user">
+                                            <input type="hidden" name="id" value="<%= udata[i].id%>">
+                                            <input class="update caozuo" type="submit" value="编辑"></input>
+                                        </form>
+                                        <form action="/guan/delete" method="post">
+                                            <input type="hidden" name="type" value="user">
+                                            <input type="hidden" name="id" value="<%= udata[i].id%>">
+                                            <input class="del caozuo" id="<%= udata[i].id%>" type="submit" value="删除">
+                                            </input>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% }%>
+                        </table>
+                    </div>
+                    <div class="main">
+                        <table border="1px" class="ucuo">
+                            <tr>
+                                <td>用户id</td>
+                                <td>昵称</td>
+                                <td>操作</td>
+                            </tr>
+                            <%for(var i=0;i<udata.length;i++){%>
+                                <tr>
+                                    <td>
+                                        <%= udata[i].id%>
+                                    </td>
+                                    <td>
+                                        <%= udata[i].name%>
+                                    </td>
+                                    <td>
+                                        <form action="/guan/lookcuo" method="get">
+                                            <input type="hidden" name="userid" value="<%=udata[i].id%>">
+                                            <input class="look" type="submit" value="查看错题"></input>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% }%>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <script>
+                $('li').click(function () {
+                    $(this).addClass('active').siblings().removeClass('active');
+                    if (getCss(document.querySelector('.timu'), 'background-color') == 'rgb(0, 122, 255)') {
+                        document.querySelector('.type1').style.height = '120px';
+                    } else {
+                        document.querySelector('.type1').style.height = '0';
+                    }
+                    if (getCss(document.querySelector('.yonghu'), 'background-color') == 'rgb(0, 122, 255)') {
+                        document.querySelector('.type2').style.height = '120px';
+                    } else {
+                        document.querySelector('.type2').style.height = '0';
+                    }
+                })
+
+
+                for (let i = 0; i < $('.xian').length; i++) {
+                    $($('.xian')[i]).click(function () {
+                        $($('.main')[i]).addClass('show').siblings().removeClass('show')
+                    })
+                }
+
+
+                $('.addchose').click(function () {
+                    $('.cadd').removeClass('xiaoshi');
+                    $('.cti').addClass('xiaoshi')
+                })
+
+                $('.addfill').click(function () {
+                    $('.fadd').removeClass('xiaoshi');
+                    $('.fti').addClass('xiaoshi')
+                })
+                $('.adduser').click(function () {
+                    $('.uadd').removeClass('xiaoshi');
+                    $('.umsg').addClass('xiaoshi')
+                })
+
+                $('.sub-fadd').click(function () {
+                    for (i = 0; i < $('.fadd input:text').length; i++) {
+                        if (!$('.fadd input:text')[i].value) {
+                            confirm('不能提交空值')
+                            return false;
+                        }
+                    }
+                    if (/^(?:1[0-2]|[1-9])$/.test($('.fadd .section').val())) {
+                        confirm('添加成功');
+                    } else {
+                        confirm('所属章节必须是数字且范围为1-12');
+                        return false;
+                    }
+                })
+
+                $('.sub-cadd').click(function () {
+                    for (i = 0; i < $('.cadd input:text').length; i++) {
+                        if (!$('.cadd input:text')[i].value) {
+                            confirm('不能提交空值')
+                            return false;
+                        }
+                    }
+                    if (/^(?:1[0-2]|[1-9])$/.test($('.cadd .section').val())) {
+                        confirm('添加成功');
+                    } else {
+                        confirm('所属章节必须是数字且范围为1-12');
+                        return false;
+                    }
+                })
+
+                $('.sub-uadd').click(function () {
+                    for (i = 0; i < $('.uadd input:text').length; i++) {
+                        if (!$('.uadd input:text')[i].value) {
+                            confirm('不能提交空值')
+                            return false;
+                        }
+                    }
+                    if (/[\u4e00-\u9fa5]{2,}/.test($('.name').val())) {
+                        if (/(13|14|15|18|17)[0-9]{9}/.test($('.phone').val())) {
+                            if (/^\w{6,}$/.test($('.pwd').val())) {
+                                console.log(123);
+                            } else {
+                                confirm('密码不合法，必须是6位以上数字、字母或下划线')
+                                return false;
+                            }
+                        } else {
+                            confirm('电话号码不合法')
+                            return false;
+                        }
+                    } else {
+                        confirm('昵称不合法，必须是两位以上汉字')
+                        return false;
+                    }
+                })
+            </script>
+</body>
+
+</html>

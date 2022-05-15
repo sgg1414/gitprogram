@@ -1,0 +1,198 @@
+// 导航
+.nav {
+    margin-bottom: 0;
+    .logo {
+        img {
+            float: left;
+            height: 25px;
+            margin-right: 10px;
+        }
+    }
+}
+
+// 占位
+.zhan {
+    height: 51px;
+}
+
+// 轮播
+.my-bullet-active {
+    background: #fff;
+    opacity: 0.8;
+}
+
+// 轮播
+section {
+    // min-width: 1200px;
+    background-color: #208CFD;
+    height: 780px;
+    .big {
+        display: flex;
+        justify-content: center;
+    }
+    .login-banner {
+        position: relative;
+        top: 150px;
+        width: 430px;
+        height: 500px;
+        padding: 0;
+        overflow: hidden;
+        img {
+            // min-width: 430px;
+            width: 430px;
+            height: 460px;
+        }
+    }
+    .box {
+        height: 530px;
+        border-radius: 4px;
+        background-color: #fff;
+        width: 430px;
+        // min-width: 430px;
+        padding: 30px;
+        margin: 120px 0 0 70px;
+    }
+}
+
+// 表单
+.midbox {
+    height: 400px;
+    .logo {
+        width: 100%;
+        text-align: center;
+        img {
+            height: 40px;
+            margin: 10px 4px 0;
+        }
+    }
+    .ad {
+        text-align: center;
+        color: #ACACAC;
+        margin-bottom: 20px;
+        img {
+            margin: 14px 10px;
+            height: 10px;
+        }
+    }
+    .msg {
+        .phone {
+            display: flex;
+        }
+        .qzhui {
+            text-align: center;
+            width: 78px;
+            height: 48px;
+            background-color: rgba(219, 221, 223, 0.3);
+            border: 1px solid #dcdfe6;
+            border-right: 0;
+            color: #909399;
+            padding-top: 16px;
+        }
+        .inp {
+            position: relative;
+            width: 100%;
+            input {
+                transition: all .5s;
+                height: 48px;
+                font-size: 15px;
+                border: 1px solid #dcdfe6;
+                width: 100%;
+                outline: none;
+                text-indent: 44px;
+                &::-webkit-input-placeholder {
+                    color: #ACACAC;
+                }
+            }
+            i {
+                font-size: 18px;
+                position: absolute;
+                left: 14px;
+                top: 12px;
+            }
+        }
+    }
+    .xyi {
+        input {
+            position: relative;
+            top: 2px;
+        }
+        span {
+            cursor: pointer;
+            font-weight: normal;
+            color: #208CFD;
+        }
+        #chk {
+            cursor: pointer;
+        }
+    }
+    .login {
+        height: 48px;
+        border-radius: 0;
+        width: 100%;
+        margin-top: 24px;
+    }
+    .foot {
+        margin-top: 24px;
+        text-align: center;
+        a {
+            color: #208CFD;
+            cursor: pointer;
+        }
+    }
+}
+
+// 错误提示
+.err {
+    height: 16px;
+    margin: 4px 0;
+    color: #f56c6c;
+    .text {
+        opacity: 0;
+        transition: all .5s;
+        font-size: 12px;
+    }
+}
+
+// 右侧导航
+.zixun {
+    position: fixed;
+    top: 50vh;
+    right: 10px;
+    z-index: 2;
+    li {
+        width: 46px;
+        height: 46px;
+        background-color: #fff;
+        text-align: center;
+        color: #208CFD;
+        margin-bottom: 20px;
+        cursor: pointer;
+        padding-top: 3px;
+        .iconfont {
+            font-size: 30px;
+        }
+        div {
+            font-size: 12px;
+        }
+    }
+}
+
+// 底部
+footer {
+    background-color: #222;
+    color: #bbb;
+    padding: 20px 0;
+    ul {
+        display: flex;
+        justify-content: center;
+        li {
+            margin-top: 18px;
+            float: left;
+            padding: 0 14px;
+            border-right: 1px solid #bbb;
+            &:last-child {
+                border-right: 0;
+            }
+        }
+    }
+}

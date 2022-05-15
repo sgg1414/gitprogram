@@ -1,0 +1,35 @@
+.con {
+    background-color: #fff;
+    font-size: 16px;
+    .ask {
+        margin: 10px;
+    }
+    .res {
+        color: red;
+        opacity: 0;
+        margin-bottom: 20px;
+    }
+    label {
+        font-weight: normal;
+        cursor: pointer;
+    }
+    ul {
+        input {
+            margin-left: 10px;
+            text-indent: 4px;
+        }
+        margin-bottom: 30px;
+        li {
+            margin: 10px;
+            &:last-child {
+                color: red;
+                opacity: 0;
+            }
+        }
+    }
+    .btn {
+        margin: 20px 0 30px 30px;
+        width: 120px;
+        height: 38px;
+    }
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>万题库-数据结构在线题库</title>
+    <script src="/javascripts/jquery-3.4.1.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <script src="/javascripts/tools.js"></script>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_3166401_hlszzntbfwu.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <link rel="stylesheet" href="/stylesheets/mine.css">
+</head>
+
+<body>
+    <!-- 顶部导航 -->
+    <nav class="navbar navbar-default navbar-fixed-top nav">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand logo" href="#"><img src="./images/wantiku_02.png" alt=""><img
+                        src="./images/wantiku_05.png" alt=""></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">首页<span class="sr-only">(current)</span></a></li>
+                    <li><a href="/mybank">我的题库</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">刷题 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/section">章节练习</a></li>
+                            <li><a href="/chuang">闯关练习</a></li>
+                            <li><a href="/ttype">题型练习</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(name){ %>
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                                <%=name%><span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/mine">我的</a></li>
+
+                                <li><a href="/quit">退出账号</a></li>
+                            </ul>
+                        </li>
+                        <%} else { %>
+                            <li><a href="/login" target="_blank">请登录</a></li>
+                            <% } %>
+                                <li><a href="/register">注册</a></li>
+                                </li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="输入你想要搜索的题目">
+                    </div>
+                    <button type="submit" class="btn btn-default">搜题</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="zhan"></div>
+
+    <div class="container">
+        <div class="blue"></div>
+        <div class="white">
+            <div class="people">
+                <%if(data){%>
+                    <%if(data[0].avatar){%>
+                        <img src="<%= data[0].avatar%>" alt="" class="avatar">
+                        <%}else{%>
+                            <img src="../images/nopeople.jpg" alt="" class="avatar">
+                            <%}%>
+                                <%}else{%>
+                                    <img src="../images/nopeople.jpg" alt="" class="avatar">
+                                    <% }%>
+
+            </div>
+            <div class="text">
+                <%= name%>
+            </div>
+            <%if(!data[0].sex&&!data[0].avatar&&!data[0].brief){%>
+                <div class="tips">
+                    您还没有完善信息哦~
+                    <a href="/domine" class="ww">
+                        <div class="wans">
+                            去完善
+                        </div>
+                    </a>
+                </div>
+                <%}else{%>
+                    <ul class="message">
+                        <li>
+                            性别：
+                            <%= data[0].sex%>
+                        </li>
+                        <li>
+                            个人简介：
+                            <%= data[0].brief%>
+                        </li>
+                    </ul>
+                    <a href="/domine" class="ww">
+                        <div class="wans" align="center">
+                            去修改信息
+                        </div>
+                    </a>
+                    <%}%>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <footer>
+        <ul>
+            <li>关于万题库</li>
+            <li>万题库大事记</li>
+            <li>隐私协议</li>
+            <li>入驻合作</li>
+            <li>帮助中心</li>
+        </ul>
+        <ul>
+            <li>车的处境搜查</li>
+            <li>下习生小女生</li>
+            <li>
+                查三姐妹阿双喜临门算我倒霉
+            </li>
+        </ul>
+        <ul>
+            <li>谁信啊开学困死我了代名词</li>
+            <li>西大桥谁的项目；</li>
+            <li>社查背单词两位领导</li>
+        </ul>
+        <ul>
+            <li>SCA参赛选手琪的无群多无群冲上去查</li>
+            <li>删除前是会计上大学前完成得出带我去多无群多无</li>
+            <li>重庆市的希望是确定性没胃口成千成万驱动器</li>
+        </ul>
+    </footer>
+    <!-- 右侧导航 -->
+    <div class="zixun">
+        <ul>
+            <li>
+                <i class="iconfont icon-QQ"></i>
+                <div class="txt">
+                    <p>QQ</p>
+                    <p>咨询</p>
+                </div>
+            </li>
+            <li>
+                <i class="iconfont icon-weixin"></i>
+                <div class="txt">
+                    <p>微信</p>
+                    <p>咨询</p>
+                </div>
+            </li>
+            <li>
+                <i class="iconfont icon-huidingbu"></i>
+                <div class="txt">
+                    <p>返回</p>
+                    <p>顶部</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="/javascripts/section.js"></script>
+</body>
+
+</html>

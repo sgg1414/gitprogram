@@ -1,0 +1,115 @@
+// 导航
+.nav {
+  margin-bottom: 0;
+  .logo {
+    img {
+      float: left;
+      height: 25px;
+      margin-right: 10px;
+    }
+  }
+}
+
+// 占位
+.zhan {
+  height: 51px;
+}
+
+body {
+  background-color: #eceeed;
+}
+
+.que {
+  background-color: #fff;
+  .tit {
+    font-size: 30px;
+    text-align: center;
+    padding: 20px;
+  }
+  .type {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  .chose {
+    font-size: 16px;
+
+    .ask {
+      margin: 10px;
+    }
+    .res {
+      color: red;
+      opacity: 0;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: normal;
+      cursor: pointer;
+    }
+  }
+  .fill {
+    ul {
+      input {
+        margin-left: 10px;
+        text-indent: 4px;
+      }
+      margin-bottom: 30px;
+      li {
+        margin: 10px;
+        &:last-child {
+          color: red;
+          opacity: 0;
+        }
+      }
+    }
+  }
+  .btn {
+    margin: 20px 0 50px 30px;
+    width: 120px;
+    height: 38px;
+  }
+}
+
+// 底部
+footer {
+  background-color: #222;
+  color: #bbb;
+  padding: 20px 0;
+  ul {
+    display: flex;
+    justify-content: center;
+    li {
+      margin-top: 18px;
+      float: left;
+      padding: 0 14px;
+      border-right: 1px solid #bbb;
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+}
+
+// 右侧导航
+.zixun {
+  position: fixed;
+  top: 50vh;
+  right: 10px;
+  z-index: 2;
+  li {
+    width: 46px;
+    height: 46px;
+    background-color: #fff;
+    text-align: center;
+    color: #208cfd;
+    margin-bottom: 20px;
+    cursor: pointer;
+    padding-top: 3px;
+    .iconfont {
+      font-size: 30px;
+    }
+    div {
+      font-size: 12px;
+    }
+  }
+}

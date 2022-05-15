@@ -1,0 +1,88 @@
+// 导航
+.nav {
+    margin-bottom: 0;
+    .logo {
+        img {
+            float: left;
+            height: 25px;
+            margin-right: 10px;
+        }
+    }
+}
+
+// 占位
+.zhan {
+    height: 51px;
+}
+
+body {
+    background-color: #eceeed;
+}
+
+.option {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+    .title {
+        border-left: 3px solid #1a8cff;
+        font-size: 20px;
+        padding-left: 4px;
+    }
+}
+
+.content {
+    background-color: #fff;
+    padding: 20px;
+    li {
+        border-top: 1px solid #eceeed;
+        padding: 20px;
+        font-size: 16px;
+        &:first-child {
+            border-top: 0;
+        }
+    }
+}
+
+// 底部
+footer {
+    background-color: #222;
+    color: #bbb;
+    padding: 20px 0;
+    ul {
+        display: flex;
+        justify-content: center;
+        li {
+            margin-top: 18px;
+            float: left;
+            padding: 0 14px;
+            border-right: 1px solid #bbb;
+            &:last-child {
+                border-right: 0;
+            }
+        }
+    }
+}
+
+// 右侧导航
+.zixun {
+    position: fixed;
+    top: 50vh;
+    right: 10px;
+    z-index: 2;
+    li {
+        width: 46px;
+        height: 46px;
+        background-color: #fff;
+        text-align: center;
+        color: #208CFD;
+        margin-bottom: 20px;
+        cursor: pointer;
+        padding-top: 3px;
+        .iconfont {
+            font-size: 30px;
+        }
+        div {
+            font-size: 12px;
+        }
+    }
+}

@@ -1,0 +1,143 @@
+// 导航
+.nav {
+    margin-bottom: 0;
+    .logo {
+        img {
+            float: left;
+            height: 25px;
+            margin-right: 10px;
+        }
+    }
+}
+
+// 占位
+.zhan {
+    height: 51px;
+}
+
+// 题型切换
+.que-chose,
+.que-fill {
+    height: 50px;
+    width: 500px;
+    border: 1px solid #E5E5E5;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    color: #2b2d2d;
+    font-family: MicrosoftYaHei;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center;
+    padding-top: 10px;
+    border-bottom: 0;
+    span {
+        font-family: ArialMT;
+        font-size: 14px;
+        font-weight: bold;
+    }
+}
+
+.que-tit {
+    margin: 0 auto;
+    width: 1010px
+}
+
+.con-tit {
+    border-bottom: 1px solid #E5E5E5;
+    margin-bottom: 20px;
+}
+
+.nactv {
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0)0px, rgba(243, 243, 243, 1)50px, rgba(243, 243, 243, 0)28px, rgba(255, 255, 255, 0)30px), 0 0;
+    span {
+        color: #666666;
+        font-size: 20px;
+    }
+    .iconfont {
+        color: #666666;
+    }
+}
+
+.actv {
+    background-color: #fff;
+    span {
+        color: #1a8cff;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .iconfont {
+        margin-left: 10px;
+        font-size: 16px;
+        color: #1a8cff;
+    }
+}
+
+.con {
+    font-size: 16px;
+    ul {
+        margin-top: 10px;
+        border: 1px solid #E5E5E5;
+        padding: 20px;
+        border-radius: 8px;
+        .res {
+            color: #1a8cff;
+            margin-top: 10px;
+        }
+        .ques {
+            font-size: 18px;
+        }
+        li {
+            margin: 4px;
+        }
+        &:last-child {
+            margin-bottom: 200px;
+        }
+    }
+}
+
+// 底部
+footer {
+    background-color: #222;
+    color: #bbb;
+    padding: 20px 0;
+    ul {
+        display: flex;
+        justify-content: center;
+        li {
+            margin-top: 18px;
+            float: left;
+            padding: 0 14px;
+            border-right: 1px solid #bbb;
+            &:last-child {
+                border-right: 0;
+            }
+        }
+    }
+}
+
+// 右侧导航
+.zixun {
+    position: fixed;
+    top: 50vh;
+    right: 10px;
+    z-index: 2;
+    li {
+        width: 46px;
+        height: 46px;
+        background-color: #fff;
+        text-align: center;
+        color: #208CFD;
+        margin-bottom: 20px;
+        cursor: pointer;
+        padding-top: 3px;
+        .iconfont {
+            font-size: 30px;
+        }
+        div {
+            font-size: 12px;
+        }
+    }
+}

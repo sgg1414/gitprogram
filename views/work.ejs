@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>万题库-数据结构在线题库</title>
+    <script src="/javascripts/jquery-3.4.1.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <script src="/javascripts/tools.js"></script>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_3166401_hlszzntbfwu.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <link rel="stylesheet" href="/stylesheets/work.css">
+</head>
+<style>
+    .noti {
+        margin-bottom: 200px !important;
+    }
+</style>
+
+<body>
+    <!-- 顶部导航 -->
+    <nav class="navbar navbar-default navbar-fixed-top nav">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand logo" href="#"><img src="./images/wantiku_02.png" alt=""><img
+                        src="./images/wantiku_05.png" alt=""></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">首页<span class="sr-only">(current)</span></a></li>
+                    <li><a href="/mybank">我的题库</a></li>
+                    <li class="dropdown" class="active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">刷题 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/section">章节练习</a></li>
+                            <li><a href="/chuang">闯关练习</a></li>
+                            <li><a href="/ttype">题型练习</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(name){ %>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                                <%=name%><span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/mine">我的</a></li>
+
+                                <li><a href="/quit">退出账号</a></li>
+                            </ul>
+                        </li>
+                        <%} else { %>
+                            <li><a href="/login" target="_blank">请登录</a></li>
+                            <% } %>
+                                <li><a href="/register">注册</a></li>
+                                </li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="输入你想要搜索的题目">
+                    </div>
+                    <button type="submit" class="btn btn-default">搜题</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="zhan"></div>
+    <div class="container que">
+        <div class="tit">
+            <%= title%>
+                <a href="/section"><button type="button" class="btn btn-info" style="float:right;">返回章节目录</button></a>
+                <hr />
+        </div>
+        <form action="/dowork" method="post">
+            <div class="chose">
+                <div class="type">一、选择题</div>
+                <%if(data.length){%>
+                    <% for(i=0;i<data.length;i++){ %>
+                        <div class="ask">
+                            <%= i+1+"."+data[i].question%>
+                        </div>&nbsp;&nbsp;
+                        <input type="radio" itemid="<%=data[i].id%>" class="dan" value="A" id="<%= 'ana'+i%>"
+                            name="<%= data[i].id %>"> <label for="<%= 'ana'+i%>">&nbsp;&nbsp;A：
+                            <%= data[i].ana%>
+                        </label><br /> &nbsp;&nbsp;
+                        <input type="radio" class="dan" itemid="<%=data[i].id%>" value="B" id="<%= 'anb'+i%>"
+                            name="<%= data[i].id %>"> <label for="<%= 'anb'+i%>">&nbsp;&nbsp;B：
+                            <%= data[i].anb%>
+                        </label><br /> &nbsp;&nbsp;
+                        <input type="radio" class="dan" itemid="<%=data[i].id%>" value="C" id="<%= 'anc'+i%>"
+                            name="<%= data[i].id %>"> <label for="<%= 'anc'+i%>">&nbsp;&nbsp;C：
+                            <%= data[i].anc%>
+                        </label><br /> &nbsp;&nbsp;
+                        <input type="radio" class="dan" itemid="<%=data[i].id%>" value="D" id="<%= 'andd'+i%>"
+                            name="<%= data[i].id %>"> <label for="<%= 'andd'+i%>">&nbsp;&nbsp;D：
+                            <%= data[i].andd%>
+                        </label><br />
+                        <div class="res">[答案]：
+                            <%= data[i].answer%>
+                        </div>
+                        <%}%>
+                            <%}else{%>
+                                <br />
+                                暂时还没有相关题目！
+                                <br />
+                                <%}%>
+            </div>
+            <div class="fill">
+                <div class="type">二、填空题</div>
+                <%if(data1.length){%>
+                    <% for(i=0;i<data1.length;i++){ %>
+                        <ul>
+                            <li>
+                                <%= i+1+"."+data1[i].question%>
+                            </li>
+                            <input type="text" name="<%= data1[i].id%>" class="tian" placeholder="请输入你的答案"
+                                itemid="<%=data[i].id%>">
+                            <li class="res1">[答案]：
+                                <%= data1[i].answer%>
+                            </li>
+                        </ul>
+                        <%}%>
+                            <%}else{%>
+                                <br />
+                                暂时还没有相关题目！
+                                <br />
+                                <%}%>
+            </div>
+            <hr>
+            <%if(data.length || data1.length){%>
+                <button type="button" class="btn btn-info test">查看答案</button>
+                <button type="submit" class="btn btn-info add" style="display: none;">添加到题库</button>
+                <a href="##"><button type="button" class="btn btn-info chong">再做一次</button></a>
+                <a href="/section"><button type="button" class="btn btn-info">返回章节目录</button></a>
+                <input type="hidden" value="" name="cuo" id="cuo">
+                <input type="hidden" value="" name="fcuo" id="fcuo">
+                <%}else{%>
+                    <a href="/section"><button type="button" class="btn btn-info noti">返回章节目录</button></a>
+                    <%}%>
+        </form>
+    </div>
+    <!-- 底部 -->
+    <footer>
+        <ul>
+            <li>关于万题库</li>
+            <li>万题库大事记</li>
+            <li>隐私协议</li>
+            <li>入驻合作</li>
+            <li>帮助中心</li>
+        </ul>
+        <ul>
+            <li>车的处境搜查</li>
+            <li>下习生小女生</li>
+            <li>
+                查三姐妹阿双喜临门算我倒霉
+            </li>
+        </ul>
+        <ul>
+            <li>谁信啊开学困死我了代名词</li>
+            <li>西大桥谁的项目；</li>
+            <li>社查背单词两位领导</li>
+        </ul>
+        <ul>
+            <li>SCA参赛选手琪的无群多无群冲上去查</li>
+            <li>删除前是会计上大学前完成得出带我去多无群多无</li>
+            <li>重庆市的希望是确定性没胃口成千成万驱动器</li>
+        </ul>
+    </footer>
+    <!-- 右侧导航 -->
+    <div class="zixun">
+        <ul>
+            <li>
+                <i class="iconfont icon-QQ"></i>
+                <div class="txt">
+                    <p>QQ</p>
+                    <p>咨询</p>
+                </div>
+            </li>
+            <li>
+                <i class="iconfont icon-weixin"></i>
+                <div class="txt">
+                    <p>微信</p>
+                    <p>咨询</p>
+                </div>
+            </li>
+            <li>
+                <i class="iconfont icon-huidingbu"></i>
+                <div class="txt">
+                    <p>返回</p>
+                    <p>顶部</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="/javascripts/section.js"></script>
+    <script>
+        let num = 0;
+        let arr = [];
+        $('.test').click(function () {
+            // 单选
+            var radioAll = document.querySelectorAll('.dan');
+            var fillAll = document.querySelectorAll('.tian');
+
+            for (i = 0; i < radioAll.length; i++) {
+                if (radioAll[i].checked == true) {
+                    num++;
+                }
+            }
+            if (num < radioAll.length / 4) {
+                confirm("还有题目没有做完~");
+                num = 0;
+            } else {
+                for (i = 0; i < radioAll.length; i++) {
+                    if (radioAll[i].checked == true) {
+                        arr.push(radioAll[i].value);
+                    }
+                }
+                let cuoArr = [];
+                let fcuoArr = [];
+                for (i = 0; i < arr.length; i++) {
+                    res = $('.res')[i].innerText.split('：')[1].trim();
+                    var radioChose = document.querySelectorAll('input:checked')
+                    if (res == arr[i]) {
+                        radioChose[i].nextElementSibling.style.color = 'green';
+                    } else {
+                        radioChose[i].nextElementSibling.style.color = 'red';
+                        cuoArr.push(radioChose[i].getAttribute('name'))
+                    }
+
+                }
+                for (j = 0; j < fillAll.length; j++) {
+                    res1 = $('.res1')[j].innerText.split('：')[1].trim();
+                    let fzhi = fillAll[j].value.trim();
+                    if (fzhi == res1) {
+                        console.log(fzhi, res1);
+                    } else {
+                        fcuoArr.push(fillAll[j].getAttribute('name'))
+                    }
+                }
+                $("#cuo").val(cuoArr)
+                $("#fcuo").val(fcuoArr)
+                $('.res').css('opacity', '1');
+                $('.res1').css('opacity', '1');
+                $('.add').attr('style', 'display:inline-block;')
+            }
+        });
+
+        $('.chong').click(function () {
+            location.reload(true);
+        })
+    </script>
+</body>
+
+</html>

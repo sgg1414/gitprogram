@@ -1,0 +1,265 @@
+.nav {
+  margin-bottom: 0;
+}
+
+.nav .logo img {
+  float: left;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.zhan {
+  height: 51px;
+}
+
+.my-bullet-active {
+  background: #fff;
+  opacity: 0.8;
+}
+
+section {
+  background-color: #208cfd;
+  height: 780px;
+}
+
+section .big {
+  display: flex;
+  justify-content: center;
+}
+
+section .login-banner {
+  position: relative;
+  top: 150px;
+  width: 430px;
+  height: 500px;
+  padding: 0;
+  overflow: hidden;
+}
+
+section .login-banner img {
+  width: 430px;
+  height: 460px;
+}
+
+section .box {
+  height: 480px;
+  border-radius: 4px;
+  background-color: #fff;
+  width: 430px;
+  padding: 30px;
+  margin: 150px 0 0 50px;
+}
+
+.midbox {
+  height: 420px;
+}
+
+.midbox .logo {
+  width: 100%;
+  text-align: center;
+}
+
+.midbox .logo img {
+  height: 40px;
+  margin: 10px 4px 0;
+}
+
+.midbox .ad {
+  text-align: center;
+  color: #acacac;
+  margin-bottom: 20px;
+}
+
+.midbox .ad img {
+  margin: 14px 10px;
+  height: 10px;
+}
+
+.midbox .msg .inp input {
+  transition: all 0.5s;
+  height: 48px;
+  font-size: 15px;
+  border: 1px solid #dcdfe6;
+  width: 100%;
+  outline: none;
+  text-indent: 44px;
+}
+
+.midbox .msg .inp input::-webkit-input-placeholder {
+  color: #acacac;
+}
+
+.midbox .msg .inp {
+  position: relative;
+}
+
+.midbox .msg .inp i {
+  font-size: 18px;
+  position: absolute;
+  left: 14px;
+  top: 12px;
+}
+
+.midbox .msg .chose input {
+  cursor: pointer;
+}
+
+.midbox .msg .chose label {
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.err {
+  height: 16px;
+  margin: 4px 0;
+  color: #f56c6c;
+}
+
+.err .text {
+  opacity: 0;
+  transition: all 0.5s;
+  font-size: 12px;
+}
+
+.login {
+  width: 100%;
+  border-radius: 0 !important;
+  height: 48px;
+}
+
+.login i {
+  position: relative;
+  top: 2px;
+  left: -2px;
+}
+
+.login-phone {
+  margin-bottom: 24px;
+  margin-top: 10px;
+}
+
+.foot {
+  font-size: 12px;
+  color: #333;
+  margin: 16px 0;
+}
+
+.foot a:hover {
+  color: #208cfd;
+}
+
+.foot .left {
+  float: left;
+}
+
+.foot .right {
+  float: right;
+}
+
+.meng {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(13, 13, 14, 0.3);
+  z-index: 2000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.ewm {
+  display: none;
+  position: fixed;
+  top: 0;
+  margin: auto;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #fff;
+  width: 350px;
+  height: 440px;
+  z-index: 2001;
+  text-align: center;
+}
+
+.ewm .title {
+  font-size: 20px;
+  color: #373737;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.ewm .img {
+  border: 1px solid #e2e2e2;
+  width: 290px;
+  margin: 0 auto;
+}
+
+.ewm .img img {
+  width: 280px;
+}
+
+.ewm .foot {
+  font-size: 14px;
+}
+
+.ewm .iconfont {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.ewm .iconfont:hover {
+  color: #208cfd;
+  transform: rotate(360deg);
+  transition: all 0.5s;
+}
+
+.zixun {
+  position: fixed;
+  top: 50vh;
+  right: 10px;
+  z-index: 2;
+}
+
+.zixun li {
+  width: 46px;
+  height: 46px;
+  background-color: #fff;
+  text-align: center;
+  color: #208cfd;
+  margin-bottom: 20px;
+  cursor: pointer;
+  padding-top: 3px;
+}
+
+.zixun li .iconfont {
+  font-size: 30px;
+}
+
+.zixun li div {
+  font-size: 12px;
+}
+
+footer {
+  background-color: #222;
+  color: #bbb;
+  padding: 20px 0;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+}
+
+footer ul li {
+  margin-top: 18px;
+  float: left;
+  padding: 0 14px;
+  border-right: 1px solid #bbb;
+}
+
+footer ul li:last-child {
+  border-right: 0;
+}

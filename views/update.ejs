@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/javascripts/jquery-3.4.1.js"></script>
+    <script src="/javascripts/tools.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_3166401_hlszzntbfwu.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <title>万题库-数据结构在线题库</title>
+</head>
+<style>
+    .container {
+        width: 500px;
+        padding-top: 20px;
+    }
+
+    ul {
+        font-size: 14px;
+    }
+
+    .btn-info {
+        width: 100px;
+        height: 50px;
+        margin-left: 20px;
+    }
+
+    input {
+        color: rgb(149, 147, 147);
+        width: 300px;
+        height: 48px;
+        /* margin: 10px 0; */
+        text-indent: 10px;
+        border: 0;
+        border-bottom: 1px solid rgb(144, 143, 143);
+    }
+
+    li {
+        /* border-bottom: 1px solid rgb(206, 204, 204); */
+        padding: 20px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <% if(data[0].ana){%>
+            <h3>为id为<%=data[0].id%>的题目修改：</h3>
+            <form action="/guan/doupdate" method="post">
+                <ul>
+                    <li>题目id：<input type="text" value="<%=data[0].id%>" readonly name="id"><br></li>
+                    <li>所属单元：<input type="text" value="<%=data[0].section%>" name="section" class="section"><br></li>
+                    <li>题目：<input type="text" value="<%=data[0].question%>" name="question"><br></li>
+                    <li>选项A：<input type="text" value="<%=data[0].ana%>" name="ana"><br></li>
+                    <li>选项B：<input type="text" value="<%=data[0].anb%>" name="anb"><br></li>
+                    <li>选项C：<input type=" text" value="<%=data[0].anc%>" name="anc"><br></li>
+                    <li>选项D：<input type=" text" value="<%=data[0].andd%>" name="andd"><br></li>
+                    <li>答案：<input type=" text" value="<%=data[0].answer%>" name="answer"><br></li>
+                    <li><input type="submit" value="修改 " class="btn btn-info update">
+                        <a href="/guan">
+                            <input type="button" value="取消 " class="btn btn-info">
+                        </a>
+                    </li>
+
+                </ul>
+            </form>
+            <%}else if(data[0].name){%>
+                <h3>为id为<%=data[0].id%>的用户修改：</h3>
+                <form action="/guan/doupdate" method="post">
+                    <ul>
+                        <li>用户id：<input type="text" value="<%=data[0].id%>" readonly name="id"><br></li>
+                        <li>昵称：<input type="text" value="<%=data[0].name%>" name="name" class="uname"><br></li>
+                        <li>电话：<input type="text" value="<%=data[0].phone%>" name="phone" class="uphone"><br></li>
+                        <li>密码：<input type="text" value="<%=data[0].pwd%>" name="pwd" class="upwd"><br></li>
+                        <li><input type="submit" value="修改 " class="btn btn-info update"><a href="/guan">
+                                <input type="button" value="取消 " class="btn btn-info">
+                            </a></li>
+
+                    </ul>
+                </form>
+                <% }else{%>
+                    <h3>为id为<%=data[0].id%>的题目修改：</h3>
+                    <form action="/guan/doupdate" method="post">
+                        <ul>
+                            <li>题目id：<input type="text" value="<%=data[0].id%>" readonly name="id"><br></li>
+                            <li>所属单元：<input type="text" value="<%=data[0].section%>" name="section" class="section"><br>
+                            </li>
+                            <li>题目：<input type="text" value="<%=data[0].question%>" name="question"><br></li>
+                            <li>答案：<input type=" text" value="<%=data[0].answer%>" name="answer"><br></li>
+                            <li><input type="submit" value="修改 " class="btn btn-info update"> <a href="/guan"><input
+                                        type="button" value="取消 " class="btn btn-info"></a></li>
+                        </ul>
+                    </form>
+                    <%}%>
+    </div>
+    <%if(msg!=''){%>
+        <script>
+            confirm('修改失败，用户名或电话号码已存在')
+        </script>
+        <%}%>
+            <script>
+                $('.update').click(function () {
+                    if (document.querySelector('.uname')) {
+                        if (/[\u4e00-\u9fa5]{2,}/.test($('.uname').val())) {
+                            if (/(13|14|15|18|17)[0-9]{9}/.test($('.uphone').val())) {
+                                if (/^\w{6,}$/.test($('.upwd').val())) {
+
+                                } else {
+                                    alert('密码不合法，必须是6位以上数字、字母或下划线')
+                                    return false;
+                                }
+                            } else {
+                                alert('电话号码不合法')
+                                return false;
+                            }
+                        } else {
+                            alert('昵称不合法，必须是两位以上汉字')
+                            return false;
+                        }
+                    } else {
+                        for (i = 0; i < $('input').length - 2; i++) {
+                            if ($('input')[i].value == '') {
+                                alert('不能提交空值')
+                                return false;
+                            }
+                        }
+                        if (/^(?:1[0-2]|[1-9])$/.test($('.section').val())) {
+                            alert('修改成功')
+                        } else {
+                            alert('所属章节必须是数字且范围为1-12');
+                            return false;
+                        }
+                    }
+
+                })
+            </script>
+</body>
+
+</html>

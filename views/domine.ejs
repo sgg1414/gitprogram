@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>万题库-数据结构在线题库</title>
+    <script src="/javascripts/jquery-3.4.1.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <script src="/javascripts/tools.js"></script>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_3166401_hlszzntbfwu.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <link rel="stylesheet" href="/stylesheets/mine.css">
+</head>
+<style>
+    .msg {
+        margin-left: 300px;
+        position: relative;
+        top: -150px;
+        font-size: 16px;
+    }
+
+    .msg input {
+        margin: 20px;
+    }
+
+    .msg button {
+        width: 100px;
+        height: 30px;
+        margin: 20px 40px;
+    }
+</style>
+
+<body>
+    <!-- 顶部导航 -->
+    <nav class="navbar navbar-default navbar-fixed-top nav">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand logo" href="#"><img src="./images/wantiku_02.png" alt=""><img
+                        src="./images/wantiku_05.png" alt=""></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">首页<span class="sr-only">(current)</span></a></li>
+                    <li><a href="/mybank">我的题库</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">刷题 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/section">章节练习</a></li>
+                            <li><a href="/chuang">闯关练习</a></li>
+                            <li><a href="/ttype">题型练习</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(uname){ %>
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                                <%=uname%><span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/mine">我的</a></li>
+                                <li><a href="/quit">退出账号</a></li>
+                            </ul>
+                        </li>
+                        <%} else { %>
+                            <li><a href="/login" target="_blank">请登录</a></li>
+                            <% } %>
+                                <li><a href="/register">注册</a></li>
+                                </li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="输入你想要搜索的题目">
+                    </div>
+                    <button type="submit" class="btn btn-default">搜题</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="zhan"></div>
+
+    <div class="container">
+        <div class="blue"></div>
+        <div class="white">
+            <div class="people">
+                <img src="../images/nopeople.jpg" alt="" class="avatar">
+            </div>
+            <form action="/setmine" method="post" class="msg" enctype="multipart/form-data">
+                昵称：<input type="text" name="name" value="<%=uname%>"><br> 性别：
+                <input type="radio" name="sex" value="女" id="nv"><label for="nv">女</label> <input type="radio"
+                    name="sex" value="男" id="nan"><label for="nan">男</label> <br> 简介：
+                <textarea name="brief" id="" cols="80" rows="4"></textarea> <br> 上传头像：
+                <input type="file" name="files" required>
+                <button type="submit" class="btn btn-info">保存</button>
+                <a href="/mine"> <button type="button" class="btn btn-info">取消</button></a>
+            </form>
+        </div>
+    </div>
+    <%if(msg){%>
+        <script>
+            confirm('修改失败，昵称已存在')
+        </script>
+        <%}%>
+            <!-- 底部 -->
+            <footer>
+                <ul>
+                    <li>关于万题库</li>
+                    <li>万题库大事记</li>
+                    <li>隐私协议</li>
+                    <li>入驻合作</li>
+                    <li>帮助中心</li>
+                </ul>
+                <ul>
+                    <li>京ICP证060677号</li>
+                    <li>京ICP备15019602号-1</li>
+                    <li>
+                        <img src="./images/beian.png" alt=""> 京公网安备11010802031217号
+                    </li>
+                </ul>
+                <ul>
+                    <li>Copyright © 2014- 2022 万题库(wantiku.com) 北京美好明天科技有限公司</li>
+                    <li>营业执照信息</li>
+                    <li>社会统一信用代码：91110 10832 72789 36N</li>
+                </ul>
+                <ul>
+                    <li>出版物经营许可证新出发京批字第直170033号</li>
+                    <li>网络文化经营许可证 京网文【2019】4924-537号</li>
+                    <li>广播电视节目经营许可证 （京）字第08120号</li>
+                </ul>
+            </footer>
+            <!-- 右侧导航 -->
+            <div class="zixun">
+                <ul>
+                    <li>
+                        <i class="iconfont icon-QQ"></i>
+                        <div class="txt">
+                            <p>QQ</p>
+                            <p>咨询</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="iconfont icon-weixin"></i>
+                        <div class="txt">
+                            <p>微信</p>
+                            <p>咨询</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="iconfont icon-huidingbu"></i>
+                        <div class="txt">
+                            <p>返回</p>
+                            <p>顶部</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <script src="/javascripts/section.js"></script>
+</body>
+
+</html>

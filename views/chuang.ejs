@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>万题库-数据结构在线题库</title>
+    <script src="/javascripts/jquery-3.4.1.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <script src="/javascripts/tools.js"></script>
+    <script src="/javascripts/echarts.js"></script>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_3166401_hlszzntbfwu.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <link rel="stylesheet" href="/stylesheets/mine.css">
+    <link rel="stylesheet" href="/stylesheets/chuang.css">
+</head>
+
+<body>
+    <!-- 顶部导航 -->
+    <nav class="navbar navbar-default navbar-fixed-top nav">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand logo" href="#"><img src="./images/wantiku_02.png" alt=""><img
+                        src="./images/wantiku_05.png" alt=""></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">首页<span class="sr-only">(current)</span></a></li>
+                    <li><a href="/mybank">我的题库</a></li>
+                    <li class="dropdown  active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">刷题 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/section">章节练习</a></li>
+                            <li><a href="/chuang">闯关练习</a></li>
+                            <li><a href="/ttype">题型练习</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(name){ %>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                                <%=name%><span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/mine">我的</a></li>
+                                <li><a href="/quit">退出账号</a></li>
+                            </ul>
+                        </li>
+                        <%} else { %>
+                            <li><a href="/login" target="_blank">请登录</a></li>
+                            <% } %>
+                                <li><a href="/register">注册</a></li>
+                                </li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="输入你想要搜索的题目">
+                    </div>
+                    <button type="submit" class="btn btn-default">搜题</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="zhan"></div>
+    <div class="container">
+        <div class="big">
+            <img src="../images/chuang.png" alt="">
+        </div>
+        <div class="go">
+            <a href="/workchuang" class="astart">
+                <div class="start">
+                    开始闯关吧！
+                </div>
+            </a>
+        </div>
+        <div class="con">
+            <div class="panel panel-info">
+                <div class="panel-body toptit">
+                    top 明星榜
+                </div>
+                <div class="panel-footer">
+                    <div class="box"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 底部 -->
+    <footer>
+        <ul>
+            <li>关于万题库</li>
+            <li>万题库大事记</li>
+            <li>隐私协议</li>
+            <li>入驻合作</li>
+            <li>帮助中心</li>
+        </ul>
+        <ul>
+            <li>车的处境搜查</li>
+            <li>下习生小女生</li>
+            <li>
+                查三姐妹阿双喜临门算我倒霉
+            </li>
+        </ul>
+        <ul>
+            <li>谁信啊开学困死我了代名词</li>
+            <li>西大桥谁的项目；</li>
+            <li>社查背单词两位领导</li>
+        </ul>
+        <ul>
+            <li>SCA参赛选手琪的无群多无群冲上去查</li>
+            <li>删除前是会计上大学前完成得出带我去多无群多无</li>
+            <li>重庆市的希望是确定性没胃口成千成万驱动器</li>
+        </ul>
+    </footer>
+    <!-- 右侧导航 -->
+    <div class="zixun">
+        <ul>
+            <li>
+                <i class="iconfont icon-QQ"></i>
+                <div class="txt">
+                    <p>QQ</p>
+                    <p>咨询</p>
+                </div>
+            </li>
+            <li>
+                <i class="iconfont icon-weixin"></i>
+                <div class="txt">
+                    <p>微信</p>
+                    <p>咨询</p>
+                </div>
+            </li>
+            <li>
+                <i class="iconfont icon-huidingbu"></i>
+                <div class="txt">
+                    <p>返回</p>
+                    <p>顶部</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <%=scoreData[0].uname%>
+        <%for(var i=0;i<scoreData.length;i++){%>
+            <input type="hidden" value="<%= scoreData[i].uname%> " class="username">
+            <input type="hidden" value="<%= scoreData[i].score%> " class="userscore">
+            <%}%>
+                <script src="/javascripts/section.js"></script>
+                <script>
+                    let usernameArr = [];
+                    let userscoreArr = [];
+                    for (var i = 0; i < document.querySelectorAll('.username').length; i++) {
+                        usernameArr.push(document.querySelectorAll('.username')[i].value);
+                        userscoreArr.push(document.querySelectorAll('.userscore')[i].value);
+                    }
+                    console.log(usernameArr);
+                    console.log(userscoreArr);
+
+                    // 初始化实例对象 init里面放的是容器
+                    var mychart = echarts.init(document.querySelector(".box"));
+                    // 配置数据
+                    var option = {
+                        color: ['green', 'red', 'blue'], // 定义调色盘 那么series中每个柱子的颜色会顺序从调色盘中获取到
+                        tooltip: {
+                            trigger: 'axis', //鼠标悬浮显示标注
+                            axisPointer: {
+                                type: 'shadow' // 鼠标悬浮显示阴影
+                            }
+                        },
+                        xAxis: { // x轴
+                            show: true, //显示x轴 轴线和数据  默认为true
+                            type: "category",
+                            data: usernameArr,
+                            axisLine: { //x轴轴线
+                                lineStyle: { //轴线的样式
+                                    type: "solid", //轴线为直线 dashed 虚线 dotted 双线
+                                    color: "black", //轴线 刻度和数据的颜色
+                                }
+                            },
+                            axisLabel: { //数据
+                                show: "true", //显示数据 默认为true
+                                color: '#9d9d9d', //单独设置数据的颜色
+                            },
+                            axisTick: { //刻度
+                                show: true, //显示刻度 默认为true
+                                alignWithLabel: true, //刻度显示在柱子中间 默认为false 默认刻度显示在柱子两边
+                            }
+                        },
+                        yAxis: { //y轴
+                            type: "value",
+                        },
+                        // 如果一个x轴数据上要放多个柱子 可以用数组包多个对象的形式
+                        series: {
+                            data: userscoreArr,
+                            type: "bar", //柱状图 pie 饼形图 line 折线图
+                            showBackground: false, //显示背景颜色 默认为false
+                            backgroundStyle: {
+                                color: "rgba(180,180,58,0.2)" //背景颜色
+                            },
+                            itemStyle: {
+                                color: "#9bcafd", //柱状条的颜色
+                            }
+                        },
+                    };
+                    // 将数据放入实例对象中
+                    option && mychart.setOption(option);
+                </script>
+</body>
+
+</html>

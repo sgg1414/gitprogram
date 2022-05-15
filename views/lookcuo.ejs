@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>万题库-数据结构在线题库</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+</head>
+<style>
+    body {
+        background-color: #F0F0F0;
+    }
+
+    .hen {
+        text-align: center;
+        width: 700px;
+        height: 300px;
+        position: fixed;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .hen img {
+        width: 700px;
+        height: 300px;
+        margin-bottom: 10px;
+    }
+
+    li {
+        margin: 10px;
+
+    }
+
+    ul {
+        margin: 10px;
+    }
+
+    form {
+        display: inline-block;
+    }
+
+    input {
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    h4 {
+        margin-top: 20px;
+    }
+
+    body {
+        padding-left: 10px;
+    }
+
+    .goback,
+    .delall {
+        margin: 10px 0 0 10px;
+    }
+</style>
+
+<body>
+    <%if(msg){%>
+        <div class="container hen">
+            <h3><i> 抱歉，该用户还没有生成自己的错题库！</i> </h3>
+            <img src="../images/404.png" alt="">
+            <a href="/guan">
+                <button class="btn btn-info">← 返回首页</button>
+            </a>
+        </div>
+        <%}else{%>
+            <%if(errchose.length>0){%>
+                <a href="/guan"><button class="btn btn-info goback">← 返回首页</button></a>
+                <form action="/guan/docuodel" method="get">
+                    <input type="hidden" name="alldel" value="<%=doid%>">
+
+                    <input type="submit" class="btn btn-info delall" value="删除全部错题">
+                </form>
+                <h4>选择题：</h4>
+                <ul>
+                    <%for(i=0;i<errchose.length;i++){%>
+                        <li>
+                            <%= i+1%>.<%= errchose[i].question%>
+                        </li>
+                        <li>A: <%= errchose[i].ana%>
+                        </li>
+                        <li>B: <%= errchose[i].anb%>
+                        </li>
+                        <li>C: <%= errchose[i].anc%>
+                        </li>
+                        <li>D: <%= errchose[i].andd%>
+                        </li>
+                        <li>答案：<%= errchose[i].answer%>
+                                <form action="/guan/docuodel" method="get">
+                                    <input type="hidden" name="ccid" value="<%= errchose[i].id%>">
+                                    <input type="hidden" name="id" value="<%= doid%>">
+                                    <input type=" submit" class="btn btn-info" value="删除此错题">
+                                </form>
+                        </li>
+                        <%}%>
+                </ul>
+                <%}%>
+                    <%if(errfill.length>0){%>
+                        <h4>填空题：</h4>
+                        <%for(i=0;i<errfill.length;i++){%>
+                            <ul>
+                                <li>
+                                    <%=i+1%>.<%= errfill[i].question%>
+                                </li>
+                                <li> 答案：<%= errfill[i].answer%>
+                                        <form action="/guan/docuodel" method="get">
+                                            <input type="hidden" name="cfid" value="<%= errfill[i].id%>">
+                                            <input type="hidden" name="id" value="<%= doid%>">
+                                            <input type="submit" class="btn btn-info" value="删除此错题">
+                                        </form>
+                                </li>
+                            </ul>
+                            <%}%>
+                                <%}%>
+                                    <%}%>
+</body>
+
+</html>

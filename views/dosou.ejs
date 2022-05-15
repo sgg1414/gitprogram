@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/javascripts/jquery-3.4.1.js"></script>
+    <script src="/javascripts/tools.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_3166401_hlszzntbfwu.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <title>万题库-数据结构在线题库</title>
+</head>
+<style>
+    table {
+        margin: 0 auto;
+    }
+
+    table tr {
+        text-align: center;
+    }
+
+    table td {
+        min-width: 100px;
+    }
+
+    .search {
+        width: 670px;
+        margin: 20px auto;
+    }
+
+    .inp-search {
+        width: 500px;
+        height: 50px;
+        text-indent: 10px;
+    }
+
+    .btn-search {
+        width: 100px;
+        height: 50px;
+        margin-left: 20px;
+    }
+
+    .back {
+        width: 150px;
+        height: 50px;
+        margin-left: 40px;
+        float: left;
+        margin-top: 20px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <%if(type=='xuan'){%>
+            <a href="/guan"><button class="back  btn btn-info">返回首页</button></a>
+            <form action="/guan/dosou" method="post">
+                <div class="search"><input type="text" class="inp-search" name="sou" placeholder="输入你想要搜索的题目">
+                    <input type="submit" class="btn btn-info btn-search" value="搜索"></input>
+                    <input type="hidden" value="xuan" name="type">
+                </div>
+            </form>
+            <table border="1px">
+                <tr>
+                    <td>题目id</td>
+                    <td>题目</td>
+                    <td>所属章节</td>
+                    <td>选项A</td>
+                    <td>选项B</td>
+                    <td>选项C</td>
+                    <td>选项D</td>
+                    <td>答案</td>
+                    <td>操作</td>
+                </tr>
+                <%for(i=0;i<data.length;i++){%>
+                    <tr>
+                        <td>
+                            <%= data[i].id%>
+                        </td>
+                        <td>
+                            <%= data[i].question%>
+                        </td>
+                        <td>
+                            <%= data[i].section%>
+                        </td>
+                        <td>
+                            <%= data[i].ana%>
+                        </td>
+                        <td>
+                            <%= data[i].anb%>
+                        </td>
+                        <td>
+                            <%= data[i].anc%>
+                        </td>
+                        <td>
+                            <%= data[i].andd%>
+                        </td>
+                        <td>
+                            <%= data[i].answer%>
+                        </td>
+                        <td>
+                            <form action="/guan/update" method="post">
+                                <input type="hidden" name="type" value="chose">
+                                <input type="hidden" name="id" value="<%= data[i].id%>">
+                                <input class="update caozuo" type="submit" value="编辑"></input>
+                            </form>
+                            <button class="del caozuo">删除</button>
+                        </td>
+                    </tr>
+                    <% }%>
+            </table>
+            <%}else if(type=='tian' ){%>
+                <a href="/guan"><button class="back btn btn-info">返回首页</button></a>
+                <form action="" method="post">
+                    <div class="search"><input type="text" class="inp-search" name="sou" placeholder="输入你想要搜索的用户">
+                        <input type="submit" class="btn btn-info btn-search" value="搜索"></input>
+                        <input type="hidden" value="tian" name="type">
+                    </div>
+                </form>
+                <table border="1px">
+                    <tr>
+                        <td>题目id</td>
+                        <td>题目</td>
+                        <td>所属单元</td>
+                        <td>答案</td>
+                        <td>操作</td>
+                    </tr>
+                    <%for(var i=0;i<data.length;i++){%>
+                        <tr>
+                            <td>
+                                <%= data[i].id%>
+                            </td>
+                            <td>
+                                <%= data[i].question%>
+                            </td>
+                            <td>
+                                <%= data[i].section%>
+                            </td>
+                            <td>
+                                <%= data[i].answer%>
+                            </td>
+                            <td>
+                                <form action="/guan/update" method="post">
+                                    <input type="hidden" name="type" value="fill">
+                                    <input type="hidden" name="id" value="<%= data[i].id%>">
+                                    <input class="update caozuo" type="submit" value="编辑"></input>
+                                </form>
+                                <button class="del caozuo">删除</button>
+                            </td>
+                        </tr>
+                        <% }%>
+                </table>
+                <%}else{%>
+                    <a href="/guan"><button class="back  btn btn-info">返回首页</button></a>
+                    <form action="" method="post">
+                        <div class="search"><input type="text" class="inp-search" name="sou" placeholder="输入你想要搜索的用户">
+                            <input type="submit" class="btn btn-info btn-search" value="搜索"></input>
+                            <input type="hidden" value="yong" name="type">
+                        </div>
+                    </form>
+                    <table border="1px">
+                        <tr>
+                            <td>用户id</td>
+                            <td>昵称</td>
+                            <td>电话</td>
+                            <td>密码</td>
+                            <td>操作</td>
+                        </tr>
+                        <%for(var i=0;i<data.length;i++){%>
+                            <tr>
+                                <td>
+                                    <%= data[i].id%>
+                                </td>
+                                <td>
+                                    <%= data[i].name%>
+                                </td>
+                                <td>
+                                    <%= data[i].phone%>
+                                </td>
+                                <td>
+                                    <%= data[i].pwd%>
+                                </td>
+                                <td>
+                                    <form action="/guan/update" method="post">
+                                        <input type="hidden" name="type" value="user">
+                                        <input type="hidden" name="id" value="<%=data[i].id%>">
+                                        <input class="update caozuo" type="submit" value="编辑"></input>
+                                    </form>
+                                    <button class="del caozuo">删除</button>
+                                </td>
+                            </tr>
+                            <% }%>
+                    </table>
+                    <%}%>
+    </div>
+
+</body>
+
+</html>
